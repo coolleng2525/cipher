@@ -5,3 +5,4 @@ CMakeCache.txt
 cmake_install.cmake
 CMakeLists.txt
 libcipher.a
+test_c

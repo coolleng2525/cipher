@@ -7,7 +7,7 @@ endif()
 project(cipher)
 
 if(TARGET ${PROJECT_NAME})
-  message("The ${PROJECT_NAME} arledy included in main Project")
+  message("The ${PROJECT_NAME} already included in the main Project")
   return()
 endif()
 
@@ -29,6 +29,22 @@ file(GLOB SOURCE_CPP
 
 add_library(${PROJECT_NAME} ${SOURCE_CPP})
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR})
+
+
+# Add test.c to the project
+# ADD the header file dir cipher to the project 
+# ADD the library libcipher.a to the project
+
+add_dependencies(${PROJECT_NAME} libcipher)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/cipher)
+# add_header_dir(${CMAKE_CURRENT_LIST_DIR}/cipher)
+
+add_executable(test_c ${CMAKE_CURRENT_LIST_DIR}/test.c)
+target_link_libraries(test_c PRIVATE ${PROJECT_NAME})
+
+
+
+
 
 
 if (CIPHER_TESTS)
